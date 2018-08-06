@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %} 
+{% block content %}
+
+
+
+<img class=splash src=images/mg@2x-99d57fb1.jpg />
+<section>
+    <div class=container>
+        <div class=row>
+            <div class=col-md-3>
+                {% side_menu parent=self.get_parent shallow=True calling_page=self %}
+            </div>
+            <div class=col-md-9>
+                <div class=project>
+                    <h1 class="section-title content_title">{{ self.title }}
+                        <span class="section-title__deco bg-primary"></span>
+                    </h1>
+                    <div class=content>
+                        <p class="text-muted content__intro">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus beatae nisi saepe suscipit illo.
+                            Inventore laborum magni ipsum et laboriosam natus, nam sunt eaque ducimus eum reprehenderit,
+                            molestias, voluptatum repudiandae.
+                        </p>
+                        <div class=content__text>
+                            {{ self.description | richtext }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  
+
+{% endblock %}

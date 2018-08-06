@@ -1,0 +1,45 @@
+{% load rcms_tags wagtailcore_tags %}
+{% get_site_root as site_root %}
+
+<h6 class="mb-4 text-muted">{{ home }}</h6>
+<nav>
+    <ul class="list-unstyled side-menu">
+      {% for menuitem in menuitems %}
+        <li class="nav-link
+          {% if menuitem.shallow %}
+            side-menu__child
+          {% else %}
+            side-menu__parent
+          {% endif %}
+          {% if menuitem.show_dropdown %}
+            dropdown
+          {% endif %}
+          {% if menuitem.active %}
+            active
+          {% endif %}">
+          <!-- {% if menuitem.show_dropdown %}
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menuitem.title }}
+              <b class="caret"></b>
+            </a>
+            {% top_menu_children parent=menuitem %}
+          {% else %}
+          {% endif %} -->
+          <a class="side-menu__link" href="{% pageurl menuitem %}">{{ menuitem.title|truncatewords_html:4 }}</a>
+          {% if menuitem.children %}
+          <ul class=list-unstyled>
+            {% for menuchild in menuitem.children %}
+              <li class="nav-link side-menu__child
+              {% if menuchild.active %}
+                active
+              {% endif %}
+              ">
+                <a class="side-menu__link" href="{% pageurl menuchild %}">{{ menuchild.title|truncatewords_html:4 }}</a>
+              </li>
+            {%endfor%}
+          </ul>
+          {% endif %}
+          <ul></ul>
+        </li>
+      {% endfor %}
+    </ul>
+</nav>

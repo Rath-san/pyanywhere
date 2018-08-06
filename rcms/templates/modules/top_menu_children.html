@@ -1,0 +1,25 @@
+{% load cms_tags wagtailcore_tags %}
+
+<ul class="dropdown-menu">
+    {% for child in menuitems_children %}
+    <li class="">
+      <a class="dropdown-item" href="{% pageurl child %}">{{ child.title }}
+        {% if child.get_children|length > 1 %}
+        <span class="caret caret-left"></span>
+        {% endif %}
+      </a>
+
+        <ul class="list-flyoff">
+        {% for c in child.get_children %}
+            {% if child.get_children.first != child.get_children.last %}
+        <li>
+          <a href="{% pageurl c %}">
+            {{c.title}}
+          </a>
+        </li>
+            {% endif %}
+        {% endfor %}
+      </ul>
+    </li>
+    {% endfor %}
+</ul>

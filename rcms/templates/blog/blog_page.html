@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogpage{% endblock%}
+
+{% block content %}
+    {% image self.intro_image original class="splash" alt="{{self.intro_image.title}}" %}
+    <section>
+        <div class=container>
+            <div class=row>
+                <!-- <div class=col-md-3>
+                    <h6 class="mb-4 text-muted">Category title</h6>
+                    <ul class="list-unstyled side-menu">
+                        <li class=side-menu__parent>
+                            <a class=side-menu__link href=#>link1</a>
+                            <ul class=list-unstyled>
+                                <li class="nav-link side-menu__child active">
+                                    <a class=side-menu__link href=#>childlink1</a>
+                                </li>
+                                <li class="nav-link side-menu__child">
+                                    <a class=side-menu__link href=#>childlink2</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div> -->
+                <div class="col-md-8 offset-md-2" >
+                    <div class=project>
+                        <h1 class="section-title content_title">
+                            {{ page.title }}
+                            <span class="section-title__deco bg-primary"></span>
+                        </h1>
+                        <p class="meta">{{ page.date }}</p>
+                        <div class=content>
+                            <p class="text-muted content__intro">
+                                {{ page.intro }}
+                            </p>
+                            <div class=content__text>
+                                <!-- <div class=rich-text>
+                                    <img class="richtext-image left" src=http://via.placeholder.com/350x150 />
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus egestas imperdiet arcu,
+                                        eleifend condimentum nunc. Donec eu odio non arcu fermentum vulputate. Vestibulum faucibus
+                                        ultrices ex, eu sodales felis aliquam eu. Pellentesque at orci nec turpis vehicula dictum
+                                        id tempor arcu. Suspendisse ac ipsum eu tellus vulputate feugiat. Suspendisse vehicula
+                                        volutpat pretium. Proin nec felis accumsan mauris euismod efficitur ut vel nisl.</p>
+                                    <img class="richtext-image full-width" src=http://via.placeholder.com/350x150 />
+                                </div> -->
+                                {{ page.body|richtext }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <p>
+        <a href="{{ page.get_parent.url }}">Index</a>
+    </p>
+
+{% endblock %}

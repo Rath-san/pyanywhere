@@ -1,0 +1,772 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+    <!-- {{ page.title }} 2 -->
+
+    <div class="d-flex justify-content-center flex-column">
+        <div class="inner-wrapper mt-auto mb-auto container-fluid p-0">
+            <div class="owl-carousel owl-theme owl-theme-custom" id=owlSlider>
+                {% for slider in self.slider_items.all %}
+                <div class=owl-carousel__item>
+                    <div class=splash__deco>
+                        <svg viewBox="0 0 1000 1000">
+                            <defs>
+                                <linearGradient id=grd1 x1=0% y1=0% x2=100% y2=0% gradientTransform="rotate(-45) translate(-.85 0)">
+                                    <stop offset=40% style=stop-color:#323232;stop-opacity:1></stop>
+                                    <stop offset=200% style=stop-color:#c8c8c8;stop-opacity:0></stop>
+                                </linearGradient>
+                                <filter id=f1 x=0 y=0 width=200% height=200%>
+                                    <feoffset dy=3 input=SourceAlpha></feoffset>
+                                    <fegaussianblur stddeviation=3 result=blur></fegaussianblur>
+                                    <feflood flood-color=#a1a1a1 flood-opacity=0.102></feflood>
+                                    <fecomposite operator=in in2=blur></fecomposite>
+                                    <fecomposite in=SourceGraphic></fecomposite>
+                                </filter>
+                            </defs>
+                            <path d="M630 720 L1000 85 L1000 535 L830 835 Z" fill=url(#grd1)></path>
+                            <path d="M785 715 L855 715 L960 920 L890 920 Z" fill=#fafafa></path>
+                            <path d="M0 0 L465 0 L910 875 L440 875 Z" fill=#ffffff filter=url(#f1)></path>
+                        </svg>
+                        {% image slider.image original class="splash__img" alt="{{slider.image.title}}" %}
+                    </div>
+                    <div class="row splash__content text-center">
+                        <div class="col-md-6 col-lg-4 offset-md-3 offset-lg-4 mt-auto mb-auto">
+                            <div class=splash__logo>
+                                <svg xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink viewbox="0 0 228.588 243.37">
+                                    <defs>
+                                        <style>
+                                            .logo-splash-1 {
+                                                fill: #333
+                                            }
+
+                                            .logo-splash-2 {
+                                                fill: url(#linear-gradient)
+                                            }
+
+                                            .logo-splash-3 {
+                                                fill: url(#linear-gradient-2)
+                                            }
+
+                                            .logo-splash-4 {
+                                                fill: url(#linear-gradient-3)
+                                            }
+
+                                            .logo-splash-5 {
+                                                fill: url(#linear-gradient-4)
+                                            }
+                                        </style>
+                                        <lineargradient id=linear-gradient x1=0.776 y1=0.949 x2=0.077 y2=0.116 gradientunits=objectBoundingBox>
+                                            <stop offset=0 stop-color=#4a4a4a></stop>
+                                            <stop offset=1 stop-color=#949494></stop>
+                                        </lineargradient>
+                                        <lineargradient id=linear-gradient-2 x1=0.5 y1=0.146 x2=0.5 y2=1 xlink:href=#linear-gradient>
+                                            <lineargradient id=linear-gradient-3 x1=0.868 y1=0.182 x2=0.229 y2=0.975 xlink:href=#linear-gradient>
+                                                <lineargradient id=linear-gradient-4 x1=0.718 y1=0.521 x2=-0.001 y2=0.105 xlink:href=#linear-gradient></lineargradient>
+                                            </lineargradient>
+                                        </lineargradient>
+                                    </defs>
+                                    <g id=Group_40 data-name="Group 40" transform="translate(-526.775 -213.465)">
+                                        <g id=Group_3 data-name="Group 3" transform="translate(526.775 416.185)">
+                                            <path class=logo-splash-1 id=Path_10 data-name="Path 10" d=M131.386,131.917l-2.64-1.408c-4.223-2.288-5.1-3.871-5.1-5.1v-1.056c0-1.232,2.464-2.288,4.751-2.288,1.76,0,5.1.88,9.678,2.64V116.96a36.495,36.495,0,0,0-9.854-1.76c-6.511,0-12.318,4.4-12.318,10.734,0,4.751,1.936,8.447,8.975,12.142l2.992,1.408a13.154,13.154,0,0,1,3.168,2.464l.352.352c1.056,1.056,1.232,1.232,1.232,2.464,0,2.64-2.288,3.871-5.279,3.871-2.464,0-6.335-1.408-11.086-3.7v9.151a41.932,41.932,0,0,0,10.382,1.76c8.271,0,13.9-4.4,13.9-11.614C140.36,139.308,138.424,135.613,131.386,131.917Z
+                                                transform="translate(88.052 -115.2)"></path>
+                                            <path class=logo-splash-1 id=Path_11 data-name="Path 11" d=M0,119.747V154.59H8.095V115.7H4.047A3.982,3.982,0,0,0,0,119.747Z
+                                                transform="translate(0 -114.82)"></path>
+                                            <path class=logo-splash-1 id=Path_12 data-name="Path 12" d=M72.047,115.7A3.982,3.982,0,0,0,68,119.747V154.59h8.095V115.7H72.047Z
+                                                transform="translate(51.661 -114.82)"></path>
+                                            <path class=logo-splash-1 id=Path_13 data-name="Path 13" d=M38.976,118.164h0l-8.447,23.58L21.554,115.7H15.747a3.982,3.982,0,0,0-4.047,4.047V154.59h7.391V129.426l7.567,22.7h6.863l7.743-22.876v25.34h7.743V115.7H42.671A4.273,4.273,0,0,0,38.976,118.164Z
+                                                transform="translate(8.889 -114.82)"></path>
+                                            <path class=logo-splash-1 id=Path_14 data-name="Path 14" d=M67.076,117.988l-.176.352-8.271,23.4L49.654,115.7H43.847a3.982,3.982,0,0,0-4.047,4.047V154.59h7.391V129.426l7.567,22.7h6.863l7.743-22.876v25.34h7.743V115.7H70.771A4.451,4.451,0,0,0,67.076,117.988Z
+                                                transform="translate(30.237 -114.82)"></path>
+                                            <path class=logo-splash-1 id=Path_15 data-name="Path 15" d=M108.547,115.7a3.982,3.982,0,0,0-4.047,4.047V154.59h8.095V115.7h-4.047Z
+                                                transform="translate(79.391 -114.82)"></path>
+                                            <path class=logo-splash-1 id=Path_16 data-name="Path 16" d=M79.2,119.747v2.816H91.694v32.2h8.271v-32.2h12.67V115.7H83.247A4.093,4.093,0,0,0,79.2,119.747Z
+                                                transform="translate(60.17 -114.82)"></path>
+                                        </g>
+                                        <g id=Group_4 data-name="Group 4" transform="translate(531.635 213.465)">
+                                            <path class=logo-splash-2 id=Path_17 data-name="Path 17" d=M171.723,160.135l-67.4-129.868h0L88.664,0,63.5,48.216l58.071,111.919c2.992,5.807,10.734,10.382,17.069,10.382h26.572C171.9,170.693,174.715,165.942,171.723,160.135Z
+                                                transform=translate(45.918)></path>
+                                            <path class=logo-splash-3 id=Path_18 data-name="Path 18" d=M49.3,75.616l24.988,48.041L99.276,75.616,74.288,27.4Z transform="translate(35.13 20.816)"></path>
+                                            <path class=logo-splash-4 id=Path_19 data-name="Path 19" d=M60.763,27.3,2.516,139.395c-2.992,5.807-.176,10.558,6.335,10.558H35.423c6.511,0,14.254-4.751,17.069-10.382L85.751,75.692Z
+                                                transform="translate(-1.321 20.74)"></path>
+                                            <path class=logo-splash-5 id=Path_20 data-name="Path 20" d=M44.049,48.04,53.2,30.267h0L67.277,2.992A20.69,20.69,0,0,0,57.423,0H30.851c-6.511,0-9.327,4.751-6.335,10.382Z
+                                                transform=translate(15.393)></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <h1 class=sr-only>{{slider.title}}</h1>
+                            <div class=splash__text>
+                                {{ slider.description | richtext }}
+                            </div>
+                            {% if slider.link %}
+                            <a class="btn btn-lg btn-primary align-self-center" href="{slider.link}" target="_blank" rel="noopener">
+                                <i class="fa fas fa-globe mr-2"></i>Przekonaj się</a>
+                            {% endif %}
+                            {% if slider.related_page %}
+                            <a class="btn btn-lg btn-primary align-self-center" href="{% pageurl slider.related_page %}">
+                                <i class="fa fas fa-globe mr-2"></i>Przekonaj się</a>
+                            {% endif %}
+                            {% if slider.file %}
+                            <a class="btn btn-lg btn-primary align-self-center" href="{{ slider.file.url }}">
+                                <i class="fa fa-file-download mr-2"></i>Sprawdź ofertę</a>
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- {% image page.splash_image width-1000 as tmp_photo %}
+    <img src="{{ tmp_photo.url }}" width="{{ tmp_photo.width }}" height="{{ tmp_photo.height }}" alt="{{ tmp_photo.alt }}" class="my-custom-class"/>
+    {{ page.body|richtext }}  -->
+
+    <!-- offer -->
+    
+        <!-- <section class="offer">
+            <h2>
+                oferta
+            </h2>
+            
+                offer
+        </section> -->
+    
+{% if offers %}
+    <section class=offer id=offer>
+        <div class=container>
+            <div class=row>
+                <div class=col-12>
+                    <h2 class=section-title>oferta
+                        <span class="section-title__deco bg-primary"></span>
+                    </h2>
+                </div>
+                {% for offer in offers %}
+                <!-- {{ offers | length }} -->
+                <div class="
+                    {% if forloop.last and not offers|length|divisibleby:2 %}
+                        col-md-12 col-lg-4
+                    {% else %}
+                        col-md-6 col-lg-4
+                    {% endif %}
+                    ">
+                    <a href="{% pageurl offer %}">
+                    <div class="card card--offer" style=width:18rem>
+                        <div class=card-body>
+                            <!-- <a class=text-body href="{% pageurl offer %}"> -->
+                                <h5 class=card-title>{{ offer.title }}</h5>
+                            <!-- </a> -->
+                        </div>
+                        <div class=card-icon>
+                            <!-- <a href="{% pageurl offer %}"> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 113.998 113.976">
+                                    <defs>
+                                        <style>
+                                            .chip-1,
+                                            .chip-3,
+                                            .chip-4,
+                                            .chip-6 {
+                                                fill: none;
+                                                stroke-miterlimit: 10;
+                                                stroke-width: 6px;
+                                            }
+
+                                            .chip-1,
+                                            .chip-3 {
+                                                stroke: #00b4ff;
+                                            }
+
+                                            .chip-1,
+                                            .chip-4 {
+                                                stroke-linejoin: bevel;
+                                            }
+
+                                            .chip-2 {
+                                                fill: #008fff;
+                                            }
+
+                                            .chip-4 {
+                                                stroke: #008fff;
+                                            }
+
+                                            .chip-5 {
+                                                fill: #a7a9ac;
+                                            }
+
+                                            .chip-6 {
+                                                stroke: #4a4a4a;
+                                            }
+                                        </style>
+                                    </defs>
+                                    <g id="chip_icon" transform="translate(-18.7 -6.133)">
+                                        <g id="chip" transform="translate(39.689 27.038)">
+                                            <g id="inner" transform="translate(17.377 17.462)">
+                                                <rect id="Rectangle_86" data-name="Rectangle 86" width="37.265" height="37.264" class="chip-1"></rect>
+                                                <g id="squares" transform="translate(6.377 7.777)">
+                                                    <rect id="Rectangle_77" data-name="Rectangle 77" width="3.142" height="3.142" transform="translate(2.222 0) rotate(45)" class="chip-2"></rect>
+                                                    <rect id="Rectangle_78" data-name="Rectangle 78" width="3.142" height="3.142" transform="translate(2.222 17.694) rotate(45)"
+                                                        class="chip-2"></rect>
+                                                    <rect id="Rectangle_79" data-name="Rectangle 79" width="3.142" height="3.142" transform="translate(11.332 17.694) rotate(45)"
+                                                        class="chip-2"></rect>
+                                                    <rect id="Rectangle_80" data-name="Rectangle 80" width="3.142" height="3.142" transform="translate(21.096 17.695) rotate(45)"
+                                                        class="chip-2"></rect>
+                                                </g>
+                                                <line id="Line_9" data-name="Line 9" x2="13.539" transform="translate(16.154 9.785)" class="chip-1"></line>
+                                                <line id="Line_10" data-name="Line 10" x2="23.282" transform="translate(6.411 18.622)" class="chip-1"></line>
+                                            </g>
+                                            <g id="outer">
+                                                <g id="stends">
+                                                    <line id="Line_11" data-name="Line 11" y2="8.9" transform="translate(20.077)" class="chip-3"></line>
+                                                    <line id="Line_12" data-name="Line 12" y2="8.9" transform="translate(30.748)" class="chip-3"></line>
+                                                    <line id="Line_13" data-name="Line 13" y2="8.9" transform="translate(41.419)" class="chip-3"></line>
+                                                    <line id="Line_14" data-name="Line 14" y2="8.9" transform="translate(52.09)" class="chip-3"></line>
+                                                    <line id="Line_15" data-name="Line 15" y1="8.9" transform="translate(52.09 63.267)" class="chip-3"></line>
+                                                    <line id="Line_16" data-name="Line 16" y1="8.9" transform="translate(41.419 63.267)" class="chip-3"></line>
+                                                    <line id="Line_17" data-name="Line 17" y1="8.9" transform="translate(30.748 63.267)" class="chip-3"></line>
+                                                    <line id="Line_18" data-name="Line 18" y1="8.9" transform="translate(20.077 63.267)" class="chip-3"></line>
+                                                    <line id="Line_19" data-name="Line 19" x2="8.9" transform="translate(0 52.09)" class="chip-3"></line>
+                                                    <line id="Line_20" data-name="Line 20" x2="8.9" transform="translate(0 41.419)" class="chip-3"></line>
+                                                    <line id="Line_21" data-name="Line 21" x2="8.9" transform="translate(0 30.748)" class="chip-3"></line>
+                                                    <line id="Line_22" data-name="Line 22" x2="8.9" transform="translate(0 20.077)" class="chip-3"></line>
+                                                    <line id="Line_23" data-name="Line 23" x1="8.9" transform="translate(63.267 20.077)" class="chip-3"></line>
+                                                    <line id="Line_24" data-name="Line 24" x1="8.9" transform="translate(63.267 30.748)" class="chip-3"></line>
+                                                    <line id="Line_25" data-name="Line 25" x1="8.9" transform="translate(63.267 41.419)" class="chip-3"></line>
+                                                    <line id="Line_26" data-name="Line 26" x1="8.9" transform="translate(63.267 52.09)" class="chip-3"></line>
+                                                </g>
+                                                <rect id="Rectangle_85" data-name="Rectangle 85" width="54.347" height="54.347" transform="translate(8.836 8.9)" class="chip-4"></rect>
+                                            </g>
+                                        </g>
+                                        <g id="deco" transform="translate(21.7 8.901)">
+                                            <g id="fills" transform="translate(68.384 0)">
+                                                <rect id="Rectangle_81" data-name="Rectangle 81" width="5.336" height="5.336" transform="translate(19.122 100.041) rotate(135)"
+                                                    class="chip-5"></rect>
+                                                <rect id="Rectangle_82" data-name="Rectangle 82" width="5.336" height="5.336" transform="translate(36.862 81.1) rotate(135)"
+                                                    class="chip-5"></rect>
+                                                <rect id="Rectangle_83" data-name="Rectangle 83" width="5.336" height="5.336" transform="translate(27.89 16.081) rotate(135)"
+                                                    class="chip-5"></rect>
+                                                <rect id="Rectangle_84" data-name="Rectangle 84" width="5.336" height="5.336" transform="translate(7.546 3.773) rotate(135)"
+                                                    class="chip-5"></rect>
+                                            </g>
+                                            <path id="Path_47" data-name="Path 47" d="M98.781,112.809A54,54,0,1,1,75.688,10a54.408,54.408,0,0,1,11.051,1.139" transform="translate(-21.7 -9.768)"
+                                                class="chip-6"></path>
+                                            <path id="Path_48" data-name="Path 48" d="M479.5,108.4a54.02,54.02,0,0,1,7.887,52.554" transform="translate(-382.954 -87.417)"
+                                                class="chip-6"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            <!-- </a> -->
+                        </div>
+                        <div class=card-body>
+                            <div class=card-text>{{ offer.intro }}</div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                {% endfor %}
+                <!-- <div class="col-md-6 col-lg-4">
+                    <div class="card card--offer" style=width:18rem>
+                        <div class=card-body>
+                            <a class=text-body href="">
+                                <h5 class=card-title>Profesjonalne usługi i serwis</h5>
+                            </a>
+                        </div>
+                        <div class=card-icon>
+                            <a href="">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 102 102">
+                                <defs>
+                                    <style>
+                                    .world-1, .world-2, .world-3 {
+                                    fill: none;
+                                    stroke-linejoin: bevel;
+                                    stroke-miterlimit: 10;
+                                    stroke-width: 6px;
+                                    }
+                                    .world-1 {
+                                    stroke: #00b4ff;
+                                    }
+                                    .world-2 {
+                                    stroke: #008fff;
+                                    }
+                                    .world-3 {
+                                    stroke: #4a4a4a;
+                                    }
+                                    .world-4 {
+                                    fill: #a7a9ac;
+                                    }
+                                    </style>
+                                </defs>
+                                <g id="world_icon" transform="translate(0)">
+                                    <g id="earth" transform="translate(21.684 21.695)">
+                                    <g id="inner" transform="translate(0.139)">
+                                        <path id="Path_34" data-name="Path 34" d="M317.741,858.214l-1.753-13.607-5.319-.538-3.068-6.794,3.825-5.937,4.562-1.494,1.753,2.65,7.371-.2-1.156-4.144,1.614-1.056h-3.008l-3.287-1.594h-5.738l-1.793,2.65,1.594-5.738,11.037-7.212" transform="translate(-272.476 -804.402)" class="world-1"></path>
+                                        <line id="Line_5" data-name="Line 5" x1="3.267" y2="3.925" transform="translate(44.109 6.335)" class="world-1"></line>
+                                        <line id="Line_6" data-name="Line 6" x2="1.474" y2="1.076" transform="translate(35.124 11.635)" class="world-1"></line>
+                                        <path id="Path_35" data-name="Path 35" d="M260.037,761v5.16l-6.595,6.475L249,761.558" transform="translate(-225.551 -761)" class="world-1"></path>
+                                        <line id="Line_7" data-name="Line 7" x2="1.693" y2="3.825" transform="translate(19.624 6.973)" class="world-1"></line>
+                                        <path id="Path_36" data-name="Path 36" d="M144.31,785.4l2.152,4.024-3.925,5.3,2.55,2.869,4.024-3.068,3.506,4.343-8.288,10.978h-4.782l-2.331,3.566-5.917-6.4" transform="translate(-131.3 -780.539)" class="world-1"></path>
+                                        <path id="Path_37" data-name="Path 37" d="M202.025,967.078l5.778-14.046-10.24-7.132-4.662,5.8,4.662,4.8-.2,8.407" transform="translate(-180.627 -909.063)" class="world-1"></path>
+                                        <path id="Path_38" data-name="Path 38" d="M152.6,916.9l1.673,1.813,11.017,3.965,1.375.956" transform="translate(-148.356 -885.84)" class="world-1"></path>
+                                        <line id="Line_8" data-name="Line 8" x2="4.921" y2="8.706" transform="translate(52.636 27.892)" class="world-1"></line>
+                                    </g>
+                                    <ellipse id="outer" cx="29.307" cy="29.307" rx="29.307" ry="29.307" class="world-2"></ellipse>
+                                    </g>
+                                    <g id="deco" transform="translate(0 0)">
+                                    <path id="Path_41" data-name="Path 41" d="M333.5,999.343A47.9,47.9,0,0,0,368.943,963.9" transform="translate(-271.392 -901.782)" class="world-3"></path>
+                                    <path id="Path_42" data-name="Path 42" d="M368.943,709.843A47.9,47.9,0,0,0,333.5,674.4" transform="translate(-271.392 -669.959)" class="world-3"></path>
+                                    <path id="Path_43" data-name="Path 43" d="M79.543,674.4A47.9,47.9,0,0,0,44.1,709.843" transform="translate(-39.649 -669.959)" class="world-3"></path>
+                                    <path id="Path_44" data-name="Path 44" d="M44.1,963.8a47.9,47.9,0,0,0,35.443,35.443" transform="translate(-39.649 -901.702)" class="world-3"></path>
+                                    <g id="fills_deco">
+                                        <rect id="Rectangle_73" data-name="Rectangle 73" width="4.801" height="4.801" transform="translate(98.605 54.58) rotate(-135)" class="world-4"></rect>
+                                        <rect id="Rectangle_74" data-name="Rectangle 74" width="4.801" height="4.801" transform="translate(3.395 47.412) rotate(45)" class="world-4"></rect>
+                                        <rect id="Rectangle_75" data-name="Rectangle 75" width="4.801" height="4.801" transform="translate(54.567 3.395) rotate(135)" class="world-4"></rect>
+                                        <rect id="Rectangle_76" data-name="Rectangle 76" width="4.801" height="4.801" transform="translate(47.428 98.605) rotate(-45)" class="world-4"></rect>
+                                    </g>
+                                    </g>
+                                </g>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class=card-body>
+                            <p class=card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div> -->
+                <!--<div class="col-md-12 col-lg-4">
+                    <div class="card card--offer" style=width:18rem>
+                        <div class=card-body>
+                            <a class=text-body href="">
+                                <h5 class=card-title>Profesjonalne usługi i serwis</h5>
+                            </a>
+                        </div>
+                        <div class=card-icon>
+                            <a href="">
+                                <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 103 96.34">
+                                    <defs>
+                                        <style>
+                                            .chart-1,
+                                            .chart-2,
+                                            .chart-4,
+                                            .chart-6 {
+                                                fill: none;
+                                                stroke-miterlimit: 10;
+                                                stroke-width: 6px
+                                            }
+
+                                            .chart-1,
+                                            .chart-4 {
+                                                stroke: #00b4ff
+                                            }
+
+                                            .chart-2 {
+                                                stroke: #008fff
+                                            }
+
+                                            .chart-2,
+                                            .chart-4,
+                                            .chart-6 {
+                                                stroke-linejoin: bevel
+                                            }
+
+                                            .chart-3 {
+                                                fill: #00b4ff
+                                            }
+
+                                            .chart-5 {
+                                                fill: #a7a9ac
+                                            }
+
+                                            .chart-6 {
+                                                stroke: #4a4a4a
+                                            }
+                                        </style>
+                                    </defs>
+                                    <g id=chart_icon transform="translate(-7 -1208.998)">
+                                        <path class=chart-1 id=slope d=M56.3,1307.16l7.773-5.566,1.875,5.566,15.234-4.941,20.8-11.973,2.207,4,21.426-27.949
+                                            transform="translate(-37.257 -46.111)"></path>
+                                        <g id=columns transform="translate(19.746 1247.396)">
+                                            <path class=chart-2 id=Path_52 data-name="Path 52" d=M59.9,1569.576V1541.1h16v28.477
+                                                transform="translate(-59.9 -1514.635)"></path>
+                                            <path class=chart-2 id=Path_53 data-name="Path 53" d=M207.2,1519.364V1478.7h16v40.664
+                                                transform="translate(-178.43 -1464.423)"></path>
+                                            <path class=chart-2 id=Path_54 data-name="Path 54" d=M355.5,1426.933V1405.6h16v21.333
+                                                transform="translate(-297.766 -1405.6)"></path>
+                                        </g>
+                                        <g id=coin transform="translate(69.434 1266.947)">
+                                            <path class=chart-3 id=Path_50 data-name="Path 50" d=M372.768,1554.3v-5.469c1.875.137,2.578,1,3.223,1,.8,0,1.191-1.016,1.191-1.543,0-1.309-2.578-1.875-4.414-1.934v-.723c0-.332-.41-.625-.8-.625a.714.714,0,0,0-.781.625v.781c-2.559.274-5.117,1.621-5.117,5,0,3.438,2.7,4.414,5.117,5.273v6.328c-2.734-.215-3.477-2.09-4.355-2.09-.664,0-1.23.879-1.23,1.543,0,1.309,2.266,3.125,5.605,3.183h0v.84a.714.714,0,0,0,.781.625c.41,0,.8-.293.8-.625v-.918c2.91-.41,4.9-2.227,4.9-5.547C377.67,1556.348,375.112,1555.156,372.768,1554.3Zm-1.426-.508c-1.426-.547-2.578-1.094-2.578-2.637,0-1.406,1.074-2.07,2.578-2.265Zm1.27,9.18v-5.684c1.309.566,2.363,1.309,2.363,3.008A2.569,2.569,0,0,1,372.612,1562.969Z
+                                                transform="translate(-355.58 -1539.668)"></path>
+                                            <ellipse class=chart-4 id=Ellipse_10 data-name="Ellipse 10" cx=16.523
+                                                cy=16.523 rx=16.523 ry=16.523></ellipse>
+                                        </g>
+                                        <g id=fills_deco transform="translate(23.636 1208.998)">
+                                            <rect class=chart-5 id=Rectangle_87 data-name="Rectangle 87" width=4.707 height=4.707
+                                                transform="translate(0 35.164) rotate(-45)"></rect>
+                                            <rect class=chart-5 id=Rectangle_88 data-name="Rectangle 88" width=4.707
+                                                height=4.707 transform="translate(37.5 25.594) rotate(-45)"></rect>
+                                            <rect class=chart-5 id=Rectangle_89 data-name="Rectangle 89" width=4.707
+                                                height=4.707 transform="translate(59.766 3.328) rotate(-45)"></rect>
+                                        </g>
+                                        <path class=chart-6 id=axis d=M10,1270.6v81.309H110 transform="translate(0 -49.571)"></path>
+                                    </g>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class=card-body>
+                            <p class=card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    <!-- projects -->
+    {% if projects %}
+
+        <section class=projects id=projects>
+            <div class=container>
+                <div class=row>
+                    <div class=col-12>
+                        <h2 class=section-title>projekty
+                            <span class="section-title__deco bg-primary"></span>
+                        </h2>
+                    </div>
+                    {% for p in projects %}
+                    <div class="
+                        {% if forloop.first %}
+                            col-lg-6
+                        {% else %}
+                            col-lg-3
+                        {% endif %}
+                    ">
+                        <div class="card card--image text-white">
+                            <img class=card-img src=/images/tech-awards@2x-09e8f7d4.jpg alt="Card image" />
+                            <a class=text-white href="{% pageurl p %}">
+                                <div class=card-img-overlay>
+                                    <h5 class=card-title>{{p.title}}</h5>
+                                    <p class=card-text>{{p.intro}}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    
+    <!-- career -->
+    {% if career %}
+        <section class=career id=career>
+            <div class=container>
+                <div class=row>
+                    <div class=col-12>
+                        <h2 class=section-title>kariera
+                            <span class="section-title__deco bg-primary"></span>
+                        </h2>
+                    </div>
+                    {% for c in career %}
+                    <div class=col-md-4>
+                        <div class="card card--text-only">
+                            <div class=card-body>
+                                <h5 class=card-title>{{ c.title|truncatewords_html:5 }}</h5>
+                                <div class=card-text>
+                                    {{ c.description|richtext }}
+                                </div>
+                                <a class=card-link href="{%pageurl c%}">Czytaj więcej</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    <!-- partners -->
+    {% if self.partner_items.all%}
+        <section class=index-cooperation id=cooperation>
+            <div class=container>
+                <div class=row>
+                    <div class=col-12>
+                        <h2 class=section-title>partnerzy
+                            <span class="section-title__deco bg-primary"></span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class=container-fluid>
+                <div class=row>
+                    <div class=col-12>
+                        <div class="owl-carousel owl-theme owl-theme-custom" id=owlCooperation>
+                            {% for partner in self.partner_items.all %}
+                            {% if partner.link %}
+                                <a href="{{ partner.link }}" target="_blank" rel="noopener" title="{{ partner.title }}">
+                                    {% image partner.image width-250 class="img-responsive" alt="{{partner.image.title}}" %}
+                                </a>
+                            {% else %}
+                                {% image partner.image width-250 class="img-responsive" alt="{{partner.image.title}}" %}
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    <!-- contact -->
+        <section class=index-contact id=contact>
+            <div class=map id=map></div>
+            <div class=container>
+                <div class=row>
+                    <div class=col-12>
+                        <h2 class=section-title>kontakt
+                            <span class="section-title__deco bg-primary"></span>
+                        </h2>
+                    </div>
+                    <div class="col-md-8 col-lg-6">
+                        <form class=index-contact-form>
+                            <div class=form-row>
+                                <div class=col-6>
+                                    <div class=form-group>
+                                        <label for=exampleInputEmail1>Email address</label>
+                                        <input class=form-control id=exampleInputEmail1 type=email aria-describedby=emailHelp placeholder="Enter email" />
+                                    </div>
+                                </div>
+                                <div class=col-6>
+                                    <div class=form-group>
+                                        <label for=exampleInputPassword1>Password</label>
+                                        <input class=form-control id=exampleInputPassword1 type=password placeholder=Password />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=form-group>
+                                <label for=exampleFormControlTextarea1>Example textarea</label>
+                                <textarea class=form-control id=exampleFormControlTextarea1 rows=3></textarea>
+                            </div>
+                            <div class="form-group custom-control custom-checkbox">
+                                <input class=custom-control-input id=exampleCheck1 type=checkbox />
+                                <label class=custom-control-label for=exampleCheck1>Wyrażam zgodę na
+                                    <a href=#>przetwarzanie danych</a>
+                                </label>
+                            </div>
+                            <div class=form-row>
+                                <div class=col-6>
+                                    <button class="btn btn-primary" type=submit>
+                                        <span class=mr-4>Wyślij</span>
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                                <div class=col-6>
+                                    <button class="btn btn-primary btn-icon ml-auto d-block" type=reset>
+                                        <span class=sr-only>Reset</span>
+                                        <i class="fas fa-redo-alt"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- <form role="form" action="" method="post">
+                            {% csrf_token %}
+                            {{ contact.form.as_p }}
+                            <button type="submit">Submit</button>
+                        </form> -->
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const mapStyles = [{
+            "featureType": "water",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#e9e9e9"
+                },
+                {
+                    "lightness": 17
+                }
+            ]
+        },
+        {
+            "featureType": "landscape",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#f5f5f5"
+                },
+                {
+                    "lightness": 20
+                }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                    "color": "#ffffff"
+                },
+                {
+                    "lightness": 17
+                }
+            ]
+        },
+        {
+            "featureType": "road.highway",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+                    "color": "#ffffff"
+                },
+                {
+                    "lightness": 29
+                },
+                {
+                    "weight": 0.2
+                }
+            ]
+        },
+        {
+            "featureType": "road.arterial",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#ffffff"
+                },
+                {
+                    "lightness": 18
+                }
+            ]
+        },
+        {
+            "featureType": "road.local",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#ffffff"
+                },
+                {
+                    "lightness": 16
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#f5f5f5"
+                },
+                {
+                    "lightness": 21
+                }
+            ]
+        },
+        {
+            "featureType": "poi.park",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#dedede"
+                },
+                {
+                    "lightness": 21
+                }
+            ]
+        },
+        {
+            "elementType": "labels.text.stroke",
+            "stylers": [{
+                    "visibility": "on"
+                },
+                {
+                    "color": "#ffffff"
+                },
+                {
+                    "lightness": 16
+                }
+            ]
+        },
+        {
+            "elementType": "labels.text.fill",
+            "stylers": [{
+                    "saturation": 36
+                },
+                {
+                    "color": "#333333"
+                },
+                {
+                    "lightness": 40
+                }
+            ]
+        },
+        {
+            "elementType": "labels.icon",
+            "stylers": [{
+                "visibility": "off"
+            }]
+        },
+        {
+            "featureType": "transit",
+            "elementType": "geometry",
+            "stylers": [{
+                    "color": "#f2f2f2"
+                },
+                {
+                    "lightness": 19
+                }
+            ]
+        },
+        {
+            "featureType": "administrative",
+            "elementType": "geometry.fill",
+            "stylers": [{
+                    "color": "#fefefe"
+                },
+                {
+                    "lightness": 20
+                }
+            ]
+        },
+        {
+            "featureType": "administrative",
+            "elementType": "geometry.stroke",
+            "stylers": [{
+                    "color": "#fefefe"
+                },
+                {
+                    "lightness": 17
+                },
+                {
+                    "weight": 1.2
+                }
+            ]
+        }
+    ];
+    // Initialize and add the map
+    window.initMap = function () {
+        // The location of Uluru
+        const location = {
+            lng: Number('{{ contact.lng }}'),
+            lat: Number('{{ contact.lat }}')
+        };
+        const mapCenter = {
+            lng: location.lng - 20,
+            lat: location.lat,
+        }
+        // var uluru = new google.maps.LatLng(39.305, -76.617);
+        // The map, centered at Uluru
+        const map = new google.maps.Map(
+            document.getElementById('map'), {
+                zoom: 4,
+                center: mapCenter,
+                styles: mapStyles
+            });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+    }
+</script>
+<script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHWZEciwCJ9Nsj6N1d0qatZ3otxL0WrT8&amp;callback=initMap"></script>
+{% endblock %}

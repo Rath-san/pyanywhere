@@ -1,0 +1,129 @@
+{% load rcms_tags wagtailcore_tags %}
+{% get_site_root as site_root %}
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white shadow-sm" id=navbar>
+    <a class=navbar-brand href="{% pageurl site_root %}">
+        <svg xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink viewbox="0 0 46.992 36.655" width=30 height=30>
+            <defs>
+                <style>
+                    .logo-1 {
+                        opacity: .8
+                    }
+
+                    .logo-2 {
+                        fill: url(#linear-gradient)
+                    }
+
+                    .logo-3 {
+                        fill: url(#linear-gradient-2)
+                    }
+
+                    .logo-4 {
+                        fill: url(#linear-gradient-3)
+                    }
+
+                    .logo-5 {
+                        fill: url(#linear-gradient-4)
+                    }
+                </style>
+                <lineargradient id=linear-gradient x1=0.776 y1=0.949 x2=0.077 y2=0.116 gradientunits=objectBoundingBox>
+                    <stop offset=0 stop-color=#4a4a4a></stop>
+                    <stop offset=1 stop-color=#949494></stop>
+                </lineargradient>
+                <lineargradient id=linear-gradient-2 x1=0.5 y1=0.146 x2=0.5 y2=1 xlink:href=#linear-gradient>
+                    <lineargradient id=linear-gradient-3 x1=0.868 y1=0.182 x2=0.229 y2=0.975 xlink:href=#linear-gradient>
+                        <lineargradient id=linear-gradient-4 x1=0.718 y1=0.521 x2=-0.001 y2=0.105 xlink:href=#linear-gradient></lineargradient>
+                    </lineargradient>
+                </lineargradient>
+            </defs>
+            <g class=logo-1 id=LOGO transform="translate(-548.794 -277.997)">
+                <path class=logo-2 id=Path_17 data-name="Path 17" d=M86.74,34.387,72.267,6.5h0L68.9,0,63.5,10.354,75.97,34.387a4.535,4.535,0,0,0,3.665,2.23h5.706C86.778,36.655,87.382,35.634,86.74,34.387Z
+                    transform="translate(508.79 277.997)"></path>
+                <path class=logo-3 id=Path_18 data-name="Path 18" d=M49.3,37.754,54.666,48.07l5.366-10.316L54.666,27.4Z transform="translate(517.624 260.951)"></path>
+                <path class=logo-4 id=Path_19 data-name="Path 19" d=M14.086,27.3,1.578,51.371a1.423,1.423,0,0,0,1.36,2.267H8.644a4.515,4.515,0,0,0,3.665-2.23l7.142-13.717Z
+                    transform="translate(547.473 261.014)"></path>
+                <path class=logo-5 id=Path_20 data-name="Path 20" d=M27.772,10.316,29.737,6.5h0L32.76.642A4.443,4.443,0,0,0,30.644,0H24.938a1.4,1.4,0,0,0-1.36,2.23Z
+                    transform="translate(533.786 277.997)"></path>
+            </g>
+        </svg>
+    </a>
+    <button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarSupportedContent aria-controls=navbarSupportedContent
+        aria-expanded=false aria-label="Toggle navigation">
+        <span class=navbar-toggler-icon></span>
+    </button>
+    <div class="collapse navbar-collapse" id=navbarSupportedContent>
+        <ul class="navbar-nav ml-auto">
+            {% for menuitem in menuitems %}
+                <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %} nav-item">
+                    {% if menuitem.show_dropdown %}
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menuitem.title }} <b class="caret"></b></a>
+                        {% top_menu_children parent=menuitem %}
+                    {% else %}
+                        <a class="nav-link" href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+                    {% endif %}
+                </li>       
+            {% endfor %}
+            <!-- <li class=nav-item>
+                <a class=nav-link href=#offer>Oferta
+                    <span class=sr-only>(current)</span>
+                </a>
+            </li>
+            <li class=nav-item>
+                <a class=nav-link href=#contact>Serwis</a>
+            </li>
+            <li class=nav-item>
+                <a class=nav-link href=#projects>Realizacje</a>
+            </li>
+            <li class=nav-item>
+                <a class=nav-link href=#career>Kariera</a>
+            </li>
+            <li class=nav-item>
+                <a class=nav-link href=#contact>Kontakt</a>
+            </li> -->
+        </ul>
+    </div>
+</nav>
+
+
+
+<!-- {# Implementation of bootstrap theme dropdown menu - shows top level links and their children #}
+<div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {# Link to home page #}
+            <a href="{% pageurl site_root %}" class="navbar-brand" title="{{ site_root.title }}" data-placement="bottom">
+                <i class="glyphicon glyphicon-home"></i>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                {% for menuitem in menuitems %}
+                    <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
+                        {% if menuitem.show_dropdown %}
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menuitem.title }} <b class="caret"></b></a>
+                            {% top_menu_children parent=menuitem %}
+                        {% else %}
+                            <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+                        {% endif %}
+                    </li>       
+                {% endfor %}
+            </ul>
+            <form class="navbar-form navbar-right" role="search" action="{% url 'search' %}" method="get">
+                <div class="input-group">
+                    <input type="text" name="query" class="form-control" placeholder="Search…" value="{{ search_query }}" />
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> -->

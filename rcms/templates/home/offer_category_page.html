@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogpage{% endblock%}
+
+{% block content %}
+    <img class=splash src=images/mg@2x-99d57fb1.jpg />
+    <section>
+        <div class=container>
+            <div class=row>
+                <div class="col-md-3">
+                    {% side_menu parent=self shallow=False calling_page=self %}
+                </div>
+                <div class=col-md-9>
+                    <div class=project>
+                        <h1 class="section-title content_title">h1 title
+                            <span class="section-title__deco bg-primary"></span>
+                        </h1>
+                        <div class=content>
+                            <p class="text-muted content__intro">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus beatae nisi saepe suscipit illo.
+                                Inventore laborum magni ipsum et laboriosam natus, nam sunt eaque ducimus eum reprehenderit,
+                                molestias, voluptatum repudiandae.
+                            </p>
+                            <div class=content__text>
+                                <div class=rich-text>
+                                    <img class="richtext-image left" src=http://via.placeholder.com/350x150 />
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus egestas imperdiet arcu,
+                                        eleifend condimentum nunc. Donec eu odio non arcu fermentum vulputate. Vestibulum faucibus
+                                        ultrices ex, eu sodales felis aliquam eu. Pellentesque at orci nec turpis vehicula dictum
+                                        id tempor arcu. Suspendisse ac ipsum eu tellus vulputate feugiat. Suspendisse vehicula
+                                        volutpat pretium. Proin nec felis accumsan mauris euismod efficitur ut vel nisl.</p>
+                                    <img class="richtext-image full-width" src=http://via.placeholder.com/350x150 />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <h1>{{ page.title }}</h1>
+    <p class="meta">{{ page.date }}</p>
+
+    <div class="intro-image">{{ page.intro_image }}</div>
+    <div class="intro">{{ page.intro }}</div>
+
+    {{ page.body|richtext }}
+
+    {% for offer in offerpages %}
+        {% with offer=offer.specific %}
+            <h2>
+                <a href="{% pageurl offer %}">{{ offer.title }}</a>
+            </h2>
+
+        {% with offer.main_image as main_image %}
+            {% if main_image %}
+                {% image main_image fill-160x100 %}
+            {% endif %}
+        {% endwith %}
+            <p>{{ offer.intro }}</p>
+            {{ offer.body|richtext }}
+        {% endwith %}
+    {% endfor %} -->
+
+    <!-- {% for item in page.gallery_images.all %}
+        <div style="float: left; margin: 10px">
+            {% image item.image fill-320x240 %}
+            <p>{{ item.caption }}</p>
+        </div>
+    {% endfor %} -->
+
+    <p>
+        <a href="{{ page.get_parent.url }}">Return to blog</a>
+    </p>
+
+{% endblock %}
