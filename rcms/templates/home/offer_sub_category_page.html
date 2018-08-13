@@ -1,40 +1,51 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block body_class %}template-blogpage{% endblock%}
+{% block body_class %}{% endblock%}
 
 {% block content %}
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
-{% side_menu parent=self.get_parent calling_page=self %}
-    <h1>{{ page.title }}</h1>
-    <p class="meta">{{ page.date }}</p>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                {% side_menu parent=self.get_parent calling_page=self %}
+            </div>
+            <div class="col-md-9">
+                <h1>{{ page.title }}</h1>
+                    <p class="meta">{{ page.date }}</p>
 
-    <div class="intro-image">{{ page.intro_image }}</div>
-    <div class="intro">{{ page.intro }}</div>
+                    <div class="intro-image">{{ page.intro_image }}</div>
+                    <div class="intro">{{ page.intro }}</div>
 
-    {{ page.body|richtext }}
+                    {{ page.body|richtext }}
 
-    {% for offer in offerpages %}
-        {% with offer=offer.specific %}
-            <h2>
-                <a href="{% pageurl offer %}">{{ offer.title }}</a>
-            </h2>
+                    {% for offer in offerpages %}
+                        {% with offer=offer.specific %}
+                            <h2>
+                                <a href="{% pageurl offer %}">{{ offer.title }}</a>
+                            </h2>
 
-        {% with offer.main_image as main_image %}
-            {% if main_image %}
-                {% image main_image fill-160x100 %}
-            {% endif %}
-        {% endwith %}
-            <p>{{ offer.intro }}</p>
-            {{ offer.body|richtext }}
-        {% endwith %}
-    {% endfor %}
+                        {% with offer.main_image as main_image %}
+                            {% if main_image %}
+                                {% image main_image fill-160x100 %}
+                            {% endif %}
+                        {% endwith %}
+                            <p>{{ offer.intro }}</p>
+                            {{ offer.body|richtext }}
+                        {% endwith %}
+                    {% endfor %}
+                    <p>
+                        <a href="{{ page.get_parent.url }}">powót do {{ page.get_parent.title }}</a>
+                    </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    
 
     <!-- {% for item in page.gallery_images.all %}
         <div style="float: left; margin: 10px">
@@ -43,8 +54,6 @@
         </div>
     {% endfor %} -->
 
-    <p>
-        <a href="{{ page.get_parent.url }}">Return to blog</a>
-    </p>
+
 
 {% endblock %}

@@ -50,9 +50,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12 text-center">
+
+                    {% if self.prev_post %}
+                        <a class="btn btn-primary align-self-start" href="{{ self.prev_post }}">poprzedni</a>
+                    {% endif %}
+                    {% if self.next_post %}
+                        <a class="btn btn-primary align-self-end" href="{{ self.next_post }}">następny</a>
+                    {% endif %}
+
+                </div>
             </div>
         </div>
+        
     </section>
+
+    
+    
     <p>
         <a href="{{ page.get_parent.url }}">Index</a>
     </p>

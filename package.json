@@ -1,0 +1,22 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "css-compile": "node-sass rcms/static/scss -o rcms/static/css",
+    "css-watch": "node-sass rcms/static/scss -o rcms/static/css --watch",
+    "browser-sync": "browser-sync start --files \"rcms/static/css/*.css, rcms/static/js/*.js, rcms/**/*.py, rcms/templates/*.html\" --proxy localhost:8000 --reload-delay=300 --reload-debounce=500",
+    "start": "concurrently --kill-others \"npm run css-watch\" \"python manage.py runserver\" \"npm run browser-sync\" "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bootstrap": "^4.1.3",
+    "browser-sync": "^2.24.6",
+    "concurrently": "^3.6.1",
+    "node-sass": "^4.9.3",
+    "owl.carousel": "^2.3.4"
+  }
+}

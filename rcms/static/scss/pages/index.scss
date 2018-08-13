@@ -1,0 +1,20 @@
+.index-contact {
+  position: relative;
+  padding-bottom: 50px;
+  .map {
+    position: absolute !important;
+    bottom: 0;
+    height: calc(100% - 150px);
+    // height: 100%;
+    width: 100%;
+  }
+  .section-title {
+    margin-bottom: 110px;
+  }
+  &-form {
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 4px;
+
+  }
+}

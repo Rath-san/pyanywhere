@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
-{% block body_class %}template-homepage{% endblock %}
+{% block body_class %}body-subpage{% endblock %}
 
 {% block content %}
-    <h1>{{ self.title }}</h1>
-    {{ self.body | richtext }}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-2">
+                <h1>{{ self.title }}</h1>
+                {{ self.body | richtext }}
+            </div>
+        </div>
+    </div>
 {% endblock %}

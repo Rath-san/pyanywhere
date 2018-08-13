@@ -1,4 +1,5 @@
 {% load rcms_tags wagtailcore_tags %}
+{% load menu_tags %}
 {% get_site_root as site_root %}
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white shadow-sm" id=navbar>
@@ -53,6 +54,7 @@
     </button>
     <div class="collapse navbar-collapse" id=navbarSupportedContent>
         <ul class="navbar-nav ml-auto">
+            {% main_menu template="menus/custom_main_menu.html" %}
             {% for menuitem in menuitems %}
                 <li class="{% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %} nav-item">
                     {% if menuitem.show_dropdown %}
@@ -63,6 +65,19 @@
                     {% endif %}
                 </li>       
             {% endfor %}
+
+            <!-- {% load menu_tags %} -->
+            <!-- <ul class="nav navbar-nav">
+            {% for item in menu_items %}
+                <li class="{{ item.active_class }}{% if item.has_children_in_menu %} dropdown{% endif %}">
+                    <a href="{{ item.href }}"{% if item.has_children_in_menu %} class="dropdown-toggle" id="ddtoggle_{{ item.link_page.pk }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"{% endif %}>{{ item.text }}{% if item.has_children_in_menu %} <span class="caret"></span>{% endif %}</a>
+                    {% if item.has_children_in_menu %}
+                        {% sub_menu item template="menus/bootstrap3/sub_menu_dropdown.html" %}
+                    {% endif %}
+                </li>       
+            {% endfor %}
+            </ul> -->
+
             <!-- <li class=nav-item>
                 <a class=nav-link href=#offer>Oferta
                     <span class=sr-only>(current)</span>

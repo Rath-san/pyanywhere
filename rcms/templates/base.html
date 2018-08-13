@@ -1,5 +1,6 @@
 {% load static wagtailuserbar %}
 {% load i18n %}
+{% load menu_tags %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -45,8 +46,32 @@
     </head>
 
     <body data-spy=scroll data-target=.navbar data-offset=50 class="{% block body_class %}{% endblock %}">
+        <svg style="visibility:hidden; position: absolute">
+            <defs>
+                <filter id=fa1 x=0 y=0 width=200% height=200%>
+                    <feoffset dy=3 input=SourceAlpha></feoffset>
+                    <fegaussianblur stddeviation=3 result=blur></fegaussianblur>
+                    <feflood flood-color=#a1a1a1 flood-opacity=0.102></feflood>
+                    <fecomposite operator=in in2=blur></fecomposite>
+                    <fecomposite in=SourceGraphic></fecomposite>
+                </filter>
+            </defs>
+            <symbol id=twoSimpleSHapes>
+                <path d="M280 290 L470 290 L740 820 L560 820 Z" fill=#FAFAFA filter=url(#fa1)></path>
+                <path d="M0 0 L270 0 L670 770 L400 770 Z" fill=#FFFFFF filter=url(#fa1)></path>
+            </symbol>
+        </svg>
+        <svg class=svg-deco--big width=250 viewBox="0 0 1265 1045">
+            <path d="M0 0 L1265 0 L12165 1045 L500 1045 Z" fill=#FAFAFA></path>
+        </svg>
+        <svg class=svg-deco--small width=250 viewBox="0 0 750 830">
+            <use xlink:href=#twoSimpleSHapes></use>
+        </svg>
+        <svg class=svg-deco--small-2 width=250 viewBox="0 0 750 830">
+            <use xlink:href=#twoSimpleSHapes></use>
+        </svg>
         {% get_site_root as site_root %}
-        {% top_menu parent=site_root calling_page=self %}
+        {% main_menu template="menus/custom_main_menu.html" %}
 
          {% if messages %}
             <ul class="messages">
@@ -62,6 +87,8 @@
         {% block content %}{% endblock %}
 
         {# Global javascript #}
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static 'js/vendor.bundle.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/main.bundle.js' %}"></script>
 
         {% block extra_js %}

@@ -24,7 +24,7 @@ COMPRESS_CSS_FILTERS = [
 ]
 COMPRESS_CSS_HASHING_METHOD = 'content'
 
-DEBUG = True
+DEBUG = False
 
 try:
     from .local import *

@@ -1,0 +1,9 @@
+.splash {
+  margin-top: 56px;
+  height: 300px;
+  object-fit: cover;
+  width: 100%;
+  &--small {
+    height: 180px;
+  }
+}

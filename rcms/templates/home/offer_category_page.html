@@ -1,18 +1,32 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block body_class %}template-blogpage{% endblock%}
+{% block body_class %}{% endblock%}
 
 {% block content %}
-    <img class=splash src=images/mg@2x-99d57fb1.jpg />
+    <!-- <img class=splash src=images/mg@2x-99d57fb1.jpg /> -->
+    {% image self.intro_image width-1200 class="splash" alt="{{self.intro_image.title}}" %}
     <section>
         <div class=container>
+            {% with parent as self.get_parent.specific %}
+                {{parent.intro}}
+            {% endwith %}
             <div class=row>
                 <div class="col-md-3">
                     {% side_menu parent=self shallow=False calling_page=self %}
                 </div>
                 <div class=col-md-9>
-                    <div class=project>
+                    
+                    {% for offerpage in offerpages %}
+                    {% with offerpage=offerpage.specific %}
+                        <!-- {{offerpage.get_children}} -->
+                        {% for op in offerpage.get_children %}
+                            {{ op.title }}
+                            <a href="{% pageurl op %}">{{ op.title }}</a>
+                        {% endfor %}
+                    {% endwith %}
+                    {% endfor %}
+                    <!-- <div class=project>
                         <h1 class="section-title content_title">h1 title
                             <span class="section-title__deco bg-primary"></span>
                         </h1>
@@ -32,7 +46,7 @@
                                     <img class="richtext-image full-width" src=http://via.placeholder.com/350x150 />
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -70,8 +84,8 @@
         </div>
     {% endfor %} -->
 
-    <p>
-        <a href="{{ page.get_parent.url }}">Return to blog</a>
-    </p>
+    <!-- <p> -->
+        <!-- <a href="{{ page.get_parent.url }}">Return to blog</a> -->
+    <!-- </p> -->
 
 {% endblock %}

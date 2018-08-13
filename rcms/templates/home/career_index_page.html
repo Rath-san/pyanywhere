@@ -2,10 +2,257 @@
 {% load wagtailcore_tags %}
 {% load wagtailcore_tags wagtailimages_tags %}
 
-{% block body_class %}template-blogindexpage{% endblock %} 
+{% block body_class %}{% endblock %} 
 {% block content %}
+{% image self.intro_image width-1200 class="splash splash--small" alt="{{self.intro_image.title}}" %}
+<section class=offer-index-page>
+    <div class=container>
+        <div class=row>
+            <div class=col-12>
+                <h2 class=section-title>{{self.title}}
+                    <span class="section-title__deco bg-primary"></span>
+                </h2>
+            </div>
+            {% for c in self.get_children %}
+                <div class=col-md-4>
+                    <div class="card card--text-only">
+                        <div class=card-body>
+                            <h5 class=card-title>{{ c.title|truncatewords_html:5 }}</h5>
+                            <div class=card-text>
+                                {{ c.description|richtext }}
+                            </div>
+                            <a class=card-link href="{%pageurl c%}">Czytaj więcej</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <!-- <div class="col-md-6 col-lg-4">
+                <a class=card__wrapper href=#>
+                    <div class="card card--offer" style=width:18rem>
+                        <div class=card-body>
+                            <h5 class=card-title>Profesjonalne usługi i serwis</h5>
+                        </div>
+                        <div class=card-icon>
+                            <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 103 96.34">
+                                <defs>
+                                    <style>
+                                        .chart-1,
+                                        .chart-2,
+                                        .chart-4,
+                                        .chart-6 {
+                                            fill: none;
+                                            stroke-miterlimit: 10;
+                                            stroke-width: 6px
+                                        }
 
-<h1>{{ self.title }}</h1>
+                                        .chart-1,
+                                        .chart-4 {
+                                            stroke: #00b4ff
+                                        }
+
+                                        .chart-2 {
+                                            stroke: #008fff
+                                        }
+
+                                        .chart-2,
+                                        .chart-4,
+                                        .chart-6 {
+                                            stroke-linejoin: bevel
+                                        }
+
+                                        .chart-3 {
+                                            fill: #00b4ff
+                                        }
+
+                                        .chart-5 {
+                                            fill: #a7a9ac
+                                        }
+
+                                        .chart-6 {
+                                            stroke: #4a4a4a
+                                        }
+                                    </style>
+                                </defs>
+                                <g id=chart_icon transform="translate(-7 -1208.998)">
+                                    <path class=chart-1 id=slope d=M56.3,1307.16l7.773-5.566,1.875,5.566,15.234-4.941,20.8-11.973,2.207,4,21.426-27.949 transform="translate(-37.257 -46.111)"></path>
+                                    <g id=columns transform="translate(19.746 1247.396)">
+                                        <path class=chart-2 id=Path_52 data-name="Path 52" d=M59.9,1569.576V1541.1h16v28.477 transform="translate(-59.9 -1514.635)"></path>
+                                        <path class=chart-2 id=Path_53 data-name="Path 53" d=M207.2,1519.364V1478.7h16v40.664 transform="translate(-178.43 -1464.423)"></path>
+                                        <path class=chart-2 id=Path_54 data-name="Path 54" d=M355.5,1426.933V1405.6h16v21.333 transform="translate(-297.766 -1405.6)"></path>
+                                    </g>
+                                    <g id=coin transform="translate(69.434 1266.947)">
+                                        <path class=chart-3 id=Path_50 data-name="Path 50" d=M372.768,1554.3v-5.469c1.875.137,2.578,1,3.223,1,.8,0,1.191-1.016,1.191-1.543,0-1.309-2.578-1.875-4.414-1.934v-.723c0-.332-.41-.625-.8-.625a.714.714,0,0,0-.781.625v.781c-2.559.274-5.117,1.621-5.117,5,0,3.438,2.7,4.414,5.117,5.273v6.328c-2.734-.215-3.477-2.09-4.355-2.09-.664,0-1.23.879-1.23,1.543,0,1.309,2.266,3.125,5.605,3.183h0v.84a.714.714,0,0,0,.781.625c.41,0,.8-.293.8-.625v-.918c2.91-.41,4.9-2.227,4.9-5.547C377.67,1556.348,375.112,1555.156,372.768,1554.3Zm-1.426-.508c-1.426-.547-2.578-1.094-2.578-2.637,0-1.406,1.074-2.07,2.578-2.265Zm1.27,9.18v-5.684c1.309.566,2.363,1.309,2.363,3.008A2.569,2.569,0,0,1,372.612,1562.969Z
+                                            transform="translate(-355.58 -1539.668)"></path>
+                                        <ellipse class=chart-4 id=Ellipse_10 data-name="Ellipse 10" cx=16.523 cy=16.523 rx=16.523 ry=16.523></ellipse>
+                                    </g>
+                                    <g id=fills_deco transform="translate(23.636 1208.998)">
+                                        <rect class=chart-5 id=Rectangle_87 data-name="Rectangle 87" width=4.707 height=4.707 transform="translate(0 35.164) rotate(-45)"></rect>
+                                        <rect class=chart-5 id=Rectangle_88 data-name="Rectangle 88" width=4.707 height=4.707 transform="translate(37.5 25.594) rotate(-45)"></rect>
+                                        <rect class=chart-5 id=Rectangle_89 data-name="Rectangle 89" width=4.707 height=4.707 transform="translate(59.766 3.328) rotate(-45)"></rect>
+                                    </g>
+                                    <path class=chart-6 id=axis d=M10,1270.6v81.309H110 transform="translate(0 -49.571)"></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class=card-body>
+                            <p class=card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </a>
+            </div> -->
+            <!-- <div class="col-md-6 col-lg-4">
+                <a class=card__wrapper href=#>
+                    <div class="card card--offer" style=width:18rem>
+                        <div class=card-body>
+                            <h5 class=card-title>Profesjonalne usługi i serwis</h5>
+                        </div>
+                        <div class=card-icon>
+                            <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 103 96.34">
+                                <defs>
+                                    <style>
+                                        .chart-1,
+                                        .chart-2,
+                                        .chart-4,
+                                        .chart-6 {
+                                            fill: none;
+                                            stroke-miterlimit: 10;
+                                            stroke-width: 6px
+                                        }
+
+                                        .chart-1,
+                                        .chart-4 {
+                                            stroke: #00b4ff
+                                        }
+
+                                        .chart-2 {
+                                            stroke: #008fff
+                                        }
+
+                                        .chart-2,
+                                        .chart-4,
+                                        .chart-6 {
+                                            stroke-linejoin: bevel
+                                        }
+
+                                        .chart-3 {
+                                            fill: #00b4ff
+                                        }
+
+                                        .chart-5 {
+                                            fill: #a7a9ac
+                                        }
+
+                                        .chart-6 {
+                                            stroke: #4a4a4a
+                                        }
+                                    </style>
+                                </defs>
+                                <g id=chart_icon transform="translate(-7 -1208.998)">
+                                    <path class=chart-1 id=slope d=M56.3,1307.16l7.773-5.566,1.875,5.566,15.234-4.941,20.8-11.973,2.207,4,21.426-27.949 transform="translate(-37.257 -46.111)"></path>
+                                    <g id=columns transform="translate(19.746 1247.396)">
+                                        <path class=chart-2 id=Path_52 data-name="Path 52" d=M59.9,1569.576V1541.1h16v28.477 transform="translate(-59.9 -1514.635)"></path>
+                                        <path class=chart-2 id=Path_53 data-name="Path 53" d=M207.2,1519.364V1478.7h16v40.664 transform="translate(-178.43 -1464.423)"></path>
+                                        <path class=chart-2 id=Path_54 data-name="Path 54" d=M355.5,1426.933V1405.6h16v21.333 transform="translate(-297.766 -1405.6)"></path>
+                                    </g>
+                                    <g id=coin transform="translate(69.434 1266.947)">
+                                        <path class=chart-3 id=Path_50 data-name="Path 50" d=M372.768,1554.3v-5.469c1.875.137,2.578,1,3.223,1,.8,0,1.191-1.016,1.191-1.543,0-1.309-2.578-1.875-4.414-1.934v-.723c0-.332-.41-.625-.8-.625a.714.714,0,0,0-.781.625v.781c-2.559.274-5.117,1.621-5.117,5,0,3.438,2.7,4.414,5.117,5.273v6.328c-2.734-.215-3.477-2.09-4.355-2.09-.664,0-1.23.879-1.23,1.543,0,1.309,2.266,3.125,5.605,3.183h0v.84a.714.714,0,0,0,.781.625c.41,0,.8-.293.8-.625v-.918c2.91-.41,4.9-2.227,4.9-5.547C377.67,1556.348,375.112,1555.156,372.768,1554.3Zm-1.426-.508c-1.426-.547-2.578-1.094-2.578-2.637,0-1.406,1.074-2.07,2.578-2.265Zm1.27,9.18v-5.684c1.309.566,2.363,1.309,2.363,3.008A2.569,2.569,0,0,1,372.612,1562.969Z
+                                            transform="translate(-355.58 -1539.668)"></path>
+                                        <ellipse class=chart-4 id=Ellipse_10 data-name="Ellipse 10" cx=16.523 cy=16.523 rx=16.523 ry=16.523></ellipse>
+                                    </g>
+                                    <g id=fills_deco transform="translate(23.636 1208.998)">
+                                        <rect class=chart-5 id=Rectangle_87 data-name="Rectangle 87" width=4.707 height=4.707 transform="translate(0 35.164) rotate(-45)"></rect>
+                                        <rect class=chart-5 id=Rectangle_88 data-name="Rectangle 88" width=4.707 height=4.707 transform="translate(37.5 25.594) rotate(-45)"></rect>
+                                        <rect class=chart-5 id=Rectangle_89 data-name="Rectangle 89" width=4.707 height=4.707 transform="translate(59.766 3.328) rotate(-45)"></rect>
+                                    </g>
+                                    <path class=chart-6 id=axis d=M10,1270.6v81.309H110 transform="translate(0 -49.571)"></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class=card-body>
+                            <p class=card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <a class=card__wrapper href=#>
+                    <div class="card card--offer" style=width:18rem>
+                        <div class=card-body>
+                            <h5 class=card-title>Profesjonalne usługi i serwis</h5>
+                        </div>
+                        <div class=card-icon>
+                            <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 103 96.34">
+                                <defs>
+                                    <style>
+                                        .chart-1,
+                                        .chart-2,
+                                        .chart-4,
+                                        .chart-6 {
+                                            fill: none;
+                                            stroke-miterlimit: 10;
+                                            stroke-width: 6px
+                                        }
+
+                                        .chart-1,
+                                        .chart-4 {
+                                            stroke: #00b4ff
+                                        }
+
+                                        .chart-2 {
+                                            stroke: #008fff
+                                        }
+
+                                        .chart-2,
+                                        .chart-4,
+                                        .chart-6 {
+                                            stroke-linejoin: bevel
+                                        }
+
+                                        .chart-3 {
+                                            fill: #00b4ff
+                                        }
+
+                                        .chart-5 {
+                                            fill: #a7a9ac
+                                        }
+
+                                        .chart-6 {
+                                            stroke: #4a4a4a
+                                        }
+                                    </style>
+                                </defs>
+                                <g id=chart_icon transform="translate(-7 -1208.998)">
+                                    <path class=chart-1 id=slope d=M56.3,1307.16l7.773-5.566,1.875,5.566,15.234-4.941,20.8-11.973,2.207,4,21.426-27.949 transform="translate(-37.257 -46.111)"></path>
+                                    <g id=columns transform="translate(19.746 1247.396)">
+                                        <path class=chart-2 id=Path_52 data-name="Path 52" d=M59.9,1569.576V1541.1h16v28.477 transform="translate(-59.9 -1514.635)"></path>
+                                        <path class=chart-2 id=Path_53 data-name="Path 53" d=M207.2,1519.364V1478.7h16v40.664 transform="translate(-178.43 -1464.423)"></path>
+                                        <path class=chart-2 id=Path_54 data-name="Path 54" d=M355.5,1426.933V1405.6h16v21.333 transform="translate(-297.766 -1405.6)"></path>
+                                    </g>
+                                    <g id=coin transform="translate(69.434 1266.947)">
+                                        <path class=chart-3 id=Path_50 data-name="Path 50" d=M372.768,1554.3v-5.469c1.875.137,2.578,1,3.223,1,.8,0,1.191-1.016,1.191-1.543,0-1.309-2.578-1.875-4.414-1.934v-.723c0-.332-.41-.625-.8-.625a.714.714,0,0,0-.781.625v.781c-2.559.274-5.117,1.621-5.117,5,0,3.438,2.7,4.414,5.117,5.273v6.328c-2.734-.215-3.477-2.09-4.355-2.09-.664,0-1.23.879-1.23,1.543,0,1.309,2.266,3.125,5.605,3.183h0v.84a.714.714,0,0,0,.781.625c.41,0,.8-.293.8-.625v-.918c2.91-.41,4.9-2.227,4.9-5.547C377.67,1556.348,375.112,1555.156,372.768,1554.3Zm-1.426-.508c-1.426-.547-2.578-1.094-2.578-2.637,0-1.406,1.074-2.07,2.578-2.265Zm1.27,9.18v-5.684c1.309.566,2.363,1.309,2.363,3.008A2.569,2.569,0,0,1,372.612,1562.969Z
+                                            transform="translate(-355.58 -1539.668)"></path>
+                                        <ellipse class=chart-4 id=Ellipse_10 data-name="Ellipse 10" cx=16.523 cy=16.523 rx=16.523 ry=16.523></ellipse>
+                                    </g>
+                                    <g id=fills_deco transform="translate(23.636 1208.998)">
+                                        <rect class=chart-5 id=Rectangle_87 data-name="Rectangle 87" width=4.707 height=4.707 transform="translate(0 35.164) rotate(-45)"></rect>
+                                        <rect class=chart-5 id=Rectangle_88 data-name="Rectangle 88" width=4.707 height=4.707 transform="translate(37.5 25.594) rotate(-45)"></rect>
+                                        <rect class=chart-5 id=Rectangle_89 data-name="Rectangle 89" width=4.707 height=4.707 transform="translate(59.766 3.328) rotate(-45)"></rect>
+                                    </g>
+                                    <path class=chart-6 id=axis d=M10,1270.6v81.309H110 transform="translate(0 -49.571)"></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class=card-body>
+                            <p class=card-text>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </a>
+            </div> -->
+        </div>
+    </div>
+</section>
+
+<!-- <h1>{{ self.title }}</h1>
 
 <div class="intro">{{ self.intro|richtext }}</div>
 
@@ -15,15 +262,9 @@
             <a href="{% pageurl career %}">{{ career.title }}</a>
         </h2>
 
-    <!-- {% with career.main_image as main_image %}
-        {% if main_image %}
-            {% image main_image fill-160x100 %}
-        {% endif %}
-    {% endwith %} -->
-
     <p>{{ career.title }}</p>
     {{ career.description|richtext }}
     {% endwith %}
-{% endfor %}
+{% endfor %} -->
 
 {% endblock %}

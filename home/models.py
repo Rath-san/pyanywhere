@@ -120,13 +120,8 @@ class SliderItem(Orderable):
         DocumentChooserPanel('file'),
     ]
 
-class Policy(Page):
-    body = RichTextField(verbose_name="Polityka prywatności")
 
-    content_panels = Page.content_panels + [
-        FieldPanel('body')
-    ]
-
+# CONTACT
 class Contact(Page):
     email = models.EmailField(default="rim.kozlowski@gmail.com", verbose_name="Email hosta")
     # subtitle = models.TextField(verbose_name="Podtytuł")
@@ -136,6 +131,15 @@ class Contact(Page):
     # title_contact = models.TextField(verbose_name="Tytuł")
     lat = models.FloatField(blank=True, null=True)
     lng = models.FloatField(blank=True, null=True)
+    policy_page = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
+
+
 
     content_panels = Page.content_panels + [
     #     # FieldPanel('email'),
@@ -148,9 +152,12 @@ class Contact(Page):
     #     #     FieldPanel('description'),
 
         ],
-    #     #     heading="Informacje główne",
+            heading="Map coordinates",
     #     #     classname="collapsible collapsed"
+    
         ),
+        InlinePanel('contact_data', label="data"),
+        PageChooserPanel('policy_page'),
 
     #     # MultiFieldPanel([
     #     #     FieldPanel('subtitle_contact'),
@@ -181,6 +188,44 @@ class Contact(Page):
         context['form'] = form
         return context
 
+
+
+class ContactFormData(Orderable):
+    page = ParentalKey('Contact', related_name='contact_data', null=True)
+    title = models.CharField(max_length=255, blank=True, null=True)
+    content = RichTextField(verbose_name="data", blank=True)
+    panels = [
+        FieldPanel('title', classname="full"),
+        FieldPanel('content', classname="full"),
+    ]
+
+
+# class Partners(Orderable):
+#     page = ParentalKey('HomePage', related_name='partner_items', null=True)
+#     title = models.CharField(max_length=255, verbose_name="Tytuł")
+#     image = models.ForeignKey(
+#         'wagtailimages.Image',
+#         related_name='+',
+#         verbose_name="Obrazek",
+#         on_delete=models.SET_NULL,
+#         null=True,
+#         blank=True
+#     )
+#     link = models.TextField(null=True, blank=True, verbose_name="Link zewnętrzny")
+#     panels = [
+#         FieldPanel('title', classname="full"),
+#         ImageChooserPanel('image'),
+#         FieldPanel('link', classname="full"),
+#     ]
+
+# POLICY
+class Policy(Page):
+    body = RichTextField(verbose_name="Polityka prywatności")
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body')
+    ]
+
 # CAREER
 
 class CareerIndexPage(Page):
@@ -195,7 +240,7 @@ class CareerIndexPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('intro'),
-        ImageChooserPanel('intro_image')
+        ImageChooserPanel('intro_image'),
     ]
 
     def get_context(self, request):
@@ -218,7 +263,7 @@ class CareerPage(Page):
     content_panels = Page.content_panels + [
         MultiFieldPanel([
             # FieldPanel('title'),
-            FieldPanel('description')  
+            FieldPanel('description')
         ], heading="Kariera"
         )
     ]
@@ -236,10 +281,17 @@ class CareerPage(Page):
 
 class OfferIndexPage(Page):
     # intro = RichTextField(blank=True)
+    intro_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
-    # content_panels = Page.content_panels + [
-    #     FieldPanel('intro', classname="full")
-    # ]
+    content_panels = Page.content_panels + [
+        ImageChooserPanel('intro_image')
+    ]
 
     def get_context(self, request):
         # Update context to include only published offers
@@ -250,9 +302,17 @@ class OfferIndexPage(Page):
 
 class OfferCategoryPage(Page):
     intro = models.CharField(max_length=250, blank=True)
+    intro_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro', classname="full")
+        FieldPanel('intro', classname="full"),
+        ImageChooserPanel('intro_image'),
     ]
     def get_context(self, request):
         # Update context to include only published offers

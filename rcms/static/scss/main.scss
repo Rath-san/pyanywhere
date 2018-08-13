@@ -1,0 +1,40 @@
+// @import './vendor'
+@import './vendor/bootstrap';
+@import './vendor/font-awesome';
+@import './vendor/owl';
+/*  */
+
+// @import 'abstract'
+@import './abstract/variables';
+@import './abstract/functions';
+@import './abstract/mixins';
+/*  */
+// @import './component'
+@import './components/card';
+@import './components/buttons';
+@import './components/inputs';
+@import './components/slider';
+@import './components/side-menu';
+@import './components/rich-text';
+@import './components/partner';
+@import './components/deco';
+/*  */
+// @import './base'
+@import './base/base';
+@import './base/typography';
+/*  */
+// @import './modules'
+@import './modules/navbar';
+@import './modules/footer';
+@import './modules/splash';
+@import './modules/content';
+/*  */
+// @import './pages'
+@import './pages/index';
+@import './pages/offer-index-page';
+@import './pages/contact';
+/*  */
+// @import './themes'
+@import './themes/default';
+/*  */
+

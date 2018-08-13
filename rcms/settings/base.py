@@ -28,8 +28,12 @@ INSTALLED_APPS = [
     'search',
     'blog',
 
+    'condensedinlinepanel',
+
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
+    'wagtail.contrib.modeladmin',
+    'wagtailmenus',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -79,6 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'wagtailmenus.context_processors.wagtailmenus',
             ],
             'builtins': [
                 'overextends.templatetags.overextends_tags',
@@ -93,18 +98,18 @@ WSGI_APPLICATION = 'rcms.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'immitis_db'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'immitis_db'
+#     }
+# }
 
 
 # Password validation
@@ -166,6 +171,7 @@ WAGTAIL_SITE_NAME = "rcms"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+WAGTAILMENUS_CUSTOM_URL_SMART_ACTIVE_CLASSES = True
 
 # Email
 

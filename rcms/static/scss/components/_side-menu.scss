@@ -1,0 +1,45 @@
+.side-menu {
+  &__parent {
+    >.side-menu__link {
+      font-size: 20px;
+      font-weight: bold;
+      color: #373A3C;
+      background-color: #FAFAFA;
+      display: inline-block;
+      padding: .5rem 1rem .5rem 0;
+      border-radius: 0 4px 4px 0;
+      text-decoration: none;
+      position: relative;
+      &::before {
+        position: absolute;
+        content: "";
+        width: 1000%;
+        height: 100%;
+        background-color: #FAFAFA;
+        top: 0;
+        right: 100%;
+      }
+    }
+  }
+  &__child {
+    position: relative;
+    padding-left: 0;
+    >.side-menu__link {
+      padding-top: 1rem;
+      color: #373A3C;
+      display: block;
+      text-decoration: none;
+    }
+    &.active {
+      &:after {
+        position: absolute;
+        content: "";
+        width: 400%;
+        height: 2px;
+        background-color: $primary;
+        bottom: 0;
+        right: 50%;
+      }
+    }
+  }
+}

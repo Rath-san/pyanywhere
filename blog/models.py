@@ -12,9 +12,17 @@ from wagtail.search import index
 
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
+    intro_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro', classname="full")
+        FieldPanel('intro', classname="full"),
+        ImageChooserPanel('intro_image')
     ]
 
 
@@ -59,6 +67,18 @@ class BlogPage(Page):
             return gallery_item.image
         else:
             return None
+    
+    def prev_post(self):
+        if self.get_prev_sibling():
+            return self.get_prev_sibling().url
+        else:
+            return
+
+    def next_post(self):
+        if self.get_next_sibling():
+            return self.get_next_sibling().url
+        else:
+            return
 
 
 class BlogPageGalleryImage(Orderable):

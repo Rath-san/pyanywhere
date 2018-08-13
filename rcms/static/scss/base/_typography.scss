@@ -1,0 +1,14 @@
+.section-title {
+  padding: 0 0 10px 0;
+  position: relative;
+  text-transform: capitalize;
+  margin-bottom: 3rem;
+  &__deco {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    display: block;
+    width: 30px;
+  }
+}

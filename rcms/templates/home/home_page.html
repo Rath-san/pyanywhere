@@ -152,7 +152,7 @@
                         col-md-6 col-lg-4
                     {% endif %}
                     ">
-                    <a href="{% pageurl offer %}">
+                    <a class="card__wrapper" href="{% pageurl offer %}">
                     <div class="card card--offer" style=width:18rem>
                         <div class=card-body>
                             <!-- <a class=text-body href="{% pageurl offer %}"> -->
@@ -160,8 +160,9 @@
                             <!-- </a> -->
                         </div>
                         <div class=card-icon>
+                            {% image offer.intro_image width-800 class="card-img" alt="{{offer.intro_image.title}}" %}
                             <!-- <a href="{% pageurl offer %}"> -->
-                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 113.998 113.976">
+                                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 113.998 113.976">
                                     <defs>
                                         <style>
                                             .chip-1,
@@ -255,7 +256,7 @@
                                                 class="chip-6"></path>
                                         </g>
                                     </g>
-                                </svg>
+                                </svg> -->
                             <!-- </a> -->
                         </div>
                         <div class=card-body>
@@ -441,7 +442,7 @@
                         {% endif %}
                     ">
                         <div class="card card--image text-white">
-                            <img class=card-img src=/images/tech-awards@2x-09e8f7d4.jpg alt="Card image" />
+                            {% image p.intro_image width-800 class="card-img" alt="{{p.intro_image.title}}" %}
                             <a class=text-white href="{% pageurl p %}">
                                 <div class=card-img-overlay>
                                     <h5 class=card-title>{{p.title}}</h5>
@@ -518,66 +519,82 @@
     {% endif %}
 
     <!-- contact -->
-        <section class=index-contact id=contact>
-            <div class=map id=map></div>
-            <div class=container>
-                <div class=row>
-                    <div class=col-12>
-                        <h2 class=section-title>kontakt
-                            <span class="section-title__deco bg-primary"></span>
-                        </h2>
-                    </div>
-                    <div class="col-md-8 col-lg-6">
-                        <form class=index-contact-form>
-                            <div class=form-row>
-                                <div class=col-6>
-                                    <div class=form-group>
-                                        <label for=exampleInputEmail1>Email address</label>
-                                        <input class=form-control id=exampleInputEmail1 type=email aria-describedby=emailHelp placeholder="Enter email" />
-                                    </div>
-                                </div>
-                                <div class=col-6>
-                                    <div class=form-group>
-                                        <label for=exampleInputPassword1>Password</label>
-                                        <input class=form-control id=exampleInputPassword1 type=password placeholder=Password />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class=form-group>
-                                <label for=exampleFormControlTextarea1>Example textarea</label>
-                                <textarea class=form-control id=exampleFormControlTextarea1 rows=3></textarea>
-                            </div>
-                            <div class="form-group custom-control custom-checkbox">
-                                <input class=custom-control-input id=exampleCheck1 type=checkbox />
-                                <label class=custom-control-label for=exampleCheck1>Wyrażam zgodę na
-                                    <a href=#>przetwarzanie danych</a>
-                                </label>
-                            </div>
-                            <div class=form-row>
-                                <div class=col-6>
-                                    <button class="btn btn-primary" type=submit>
-                                        <span class=mr-4>Wyślij</span>
-                                        <i class="fas fa-paper-plane"></i>
-                                    </button>
-                                </div>
-                                <div class=col-6>
-                                    <button class="btn btn-primary btn-icon ml-auto d-block" type=reset>
-                                        <span class=sr-only>Reset</span>
-                                        <i class="fas fa-redo-alt"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- <form role="form" action="" method="post">
-                            {% csrf_token %}
-                            {{ contact.form.as_p }}
-                            <button type="submit">Submit</button>
-                        </form> -->
+    <section class=index-contact id=contact>
+        <div class=map id=map></div>
+        <div class=container>
+            <div class=row>
+                <div class=col-12>
+                    <h2 class=section-title>{{ contact.title }}    
+                        <span class="section-title__deco bg-primary"></span>
                         
-                    </div>
+                    </h2>
+                </div>
+                
+                <div class="col-md-8 col-lg-6">
+                    <form action="{{ contact.url }}" method="POST" class=index-contact-form>
+                        {% csrf_token %}
+                        <div class=form-row>
+                            <div class=col-md-6>
+                                <div class=form-group>
+                                    <label for=exampleInputEmail1>Imię i nazwisko*</label>
+                                    <input class=form-control id=exampleInputEmail1 type=text aria-describedby=nameHelp placeholder="" />
+                                </div>
+                            </div>
+                            <div class=col-md-6>
+                                <div class=form-group>
+                                    <label for=exampleInputPassword1>E-mail*</label>
+                                    <input class=form-control id=exampleInputPassword1 type=email placeholder="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class=form-group>
+                            <label for=formInputPhone>Telefon</label>
+                            <input class=form-control id=formInputPhone type=phone placeholder="" />
+                        </div>
+                        <div class=form-group>
+                            <label for=formInputCompany>Firma</label>
+                            <input class=form-control id=formInputCompany type=text placeholder="" />
+                        </div>
+                        <div class=form-group>
+                            <label for=formInputTitle>Tytuł</label>
+                            <input class=form-control id=formInputTitle type=text placeholder="" />
+                        </div>
+                        <div class=form-group>
+                            <label for=fomrInputText>Treść*</label>
+                            <textarea class=form-control id=fomrInputText rows=3></textarea>
+                        </div>
+                        <div class="form-group custom-control custom-checkbox">
+                            <input class=custom-control-input id=exampleCheck1 type=checkbox />
+                            <label class=custom-control-label for=exampleCheck1>Wyrażam zgodę na
+                                <a href="{% pageurl contact.policy_page %}">przetwarzanie danych</a>*</label>
+                        </div>
+                        <div class=form-row>
+                            <div class=col-12>
+                                <div class=g-recaptcha data-sitekey=6Lc1CmUUAAAAAOIaDsZtvr9jpDyPaHZ04dJ2-Rbl></div>
+                            </div>
+                            <div class=col-6>
+                                <button class="btn btn-primary" type=submit>
+                                    <span class=mr-4>Wyślij</span>
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                            <div class=col-6>
+                                <button class="btn btn-primary btn-icon ml-auto d-block" type=reset>
+                                    <span class=sr-only>Reset</span>
+                                    <i class="fas fa-redo-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+    <!-- <form role="form" action="" method="post">
+        {% csrf_token %}
+        {{ contact.form.as_p }}
+        <button type="submit">Submit</button>
+    </form> -->                        
 {% endblock %}
 
 {% block extra_js %}
@@ -769,4 +786,6 @@
     }
 </script>
 <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHWZEciwCJ9Nsj6N1d0qatZ3otxL0WrT8&amp;callback=initMap"></script>
+<script async=async defer=defer src=https://www.google.com/recaptcha/api.js></script>
+<!-- <script type="text/javascript" src="js/main.bundle.js"></script> -->
 {% endblock %}

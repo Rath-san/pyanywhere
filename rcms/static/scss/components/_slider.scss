@@ -1,0 +1,71 @@
+.indee-slider {
+  height: 100vh;
+}
+
+.owl-theme.owl-theme-custom {
+  .owl-dots {
+    position: absolute;
+    right: 100px;
+    bottom: 100px;
+    margin-top: 0;
+    .owl-dot {
+      span {
+        // background: red;
+        border-radius: 4px;
+      }
+      &.active,
+      &:hover {
+        span {
+          background: $primary;
+        }
+      }
+    }
+  }
+}
+
+.owl-stage-outer {}
+
+.owl-carousel__item {
+  position: relative;
+}
+
+.splash {
+  &__img {
+    position: absolute;
+    top: 50%;
+    z-index: -1;
+    transform: translateY(-50%);
+    opacity: .4;
+    max-height: 500px;
+    height: 70vh;
+    object-fit: cover;
+  }
+  &__logo {
+    width: 200px;
+    margin: auto;
+    margin-bottom: 70px;
+  }
+  &__deco {
+    // z-index: 2
+    svg {
+      // opacity: .8;
+      width: 100%;
+      display: block;
+      max-width: 1000px;
+      transform: translateX(-10%);
+      margin: auto;
+    }
+  }
+  &__text{
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 100%;
+    height: 100%;
+  }
+}
