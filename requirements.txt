@@ -21,7 +21,7 @@ requests==2.19.1
 six==1.11.0
 static3==0.7.0
 Unidecode==0.4.21
-urllib3==1.23
+urllib3==1.26.5
 wagtail==2.0.1
 webencodings==0.5.1
 whitenoise==3.3.1
